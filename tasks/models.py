@@ -1,6 +1,9 @@
 from django.db import models
 from django.conf import settings
 
+# работа с датой
+from datetime import date
+
 
 # модель задачи
 class Task(models.Model):
@@ -28,10 +31,10 @@ class Task(models.Model):
     # название задачи
     title = models.CharField(max_length=255)
 
-    # описание
+    # описание задачи
     description = models.TextField()
 
-    # статус задачи
+    # статус
     status = models.CharField(
 
         max_length=20,
@@ -47,7 +50,7 @@ class Task(models.Model):
         choices=PRIORITY_CHOICES
     )
 
-    # владелец задачи
+    # пользователь
     owner = models.ForeignKey(
 
         settings.AUTH_USER_MODEL,
@@ -61,7 +64,7 @@ class Task(models.Model):
     # дата создания
     created_at = models.DateTimeField(auto_now_add=True)
 
-    # дедлайн задачи
+    # дедлайн
     deadline = models.DateField(
 
         null=True,
@@ -69,6 +72,38 @@ class Task(models.Model):
         blank=True
     )
 
+    # цвет задачи по дедлайну
+    def get_deadline_color(self):
+
+        # если дедлайна нет
+        if not self.deadline:
+
+            return 'secondary'
+
+        # сколько дней осталось
+        days_left = (self.deadline - date.today()).days
+
+        # просроченная задача
+        if days_left < 0:
+
+            return 'dark'
+
+        # очень срочно
+        elif days_left <= 2:
+
+            return 'danger'
+
+        # скоро дедлайн
+        elif days_left <= 5:
+
+            return 'warning'
+
+        # времени еще много
+        else:
+
+            return 'success'
+
+    # отображение названия задачи
     def __str__(self):
 
         return self.title
