@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1>Tasks</h1>
+
+<a href="{% url 'task_create' %}" class="btn btn-primary mb-3">
+    Create Task
+</a>
+
+{% for task in object_list %}
+
+<div class="card mb-3">
+    <div class="card-body">
+
+        <h5>{{ task.title }}</h5>
+
+        <p>{{ task.description }}</p>
+
+    </div>
+</div>
+
+{% empty %}
+
+<p>No tasks yet.</p>
+
+{% endfor %}
+
+{% endblock %}
