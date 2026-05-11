@@ -5,14 +5,14 @@
 <!-- заголовок -->
 <h1>Tasks</h1>
 
-<!-- кнопка создания -->
+<!-- кнопка создания задачи -->
 <a href="/task/create/" class="btn btn-primary mb-3">
 
     Create Task
 
 </a>
 
-<!-- цикл по задачам -->
+<!-- список задач -->
 {% for task in object_list %}
 
 <div class="card mb-3">
@@ -44,6 +44,20 @@
         <p>
 
             Priority: {{ task.priority }}
+
+        </p>
+
+        <!-- дата создания -->
+        <p>
+
+            Created: {{ task.created_at }}
+
+        </p>
+
+        <!-- дедлайн -->
+        <p>
+
+            Deadline: {{ task.deadline }}
 
         </p>
 

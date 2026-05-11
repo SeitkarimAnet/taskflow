@@ -9,7 +9,8 @@ from django.views.generic import (
     ListView,
     CreateView,
     UpdateView,
-    DeleteView
+    DeleteView,
+    DetailView
 )
 
 from .models import Task
@@ -31,6 +32,14 @@ class TaskListView(LoginRequiredMixin, ListView):
         )
 
 
+# страница одной задачи
+class TaskDetailView(LoginRequiredMixin, DetailView):
+
+    model = Task
+
+    template_name = 'tasks/task_detail.html'
+
+
 # создание задачи
 class TaskCreateView(LoginRequiredMixin, CreateView):
 
@@ -40,14 +49,15 @@ class TaskCreateView(LoginRequiredMixin, CreateView):
         'title',
         'description',
         'status',
-        'priority'
+        'priority',
+        'deadline'
     ]
 
     template_name = 'tasks/task_form.html'
 
     success_url = reverse_lazy('task_list')
 
-    # привязываем задачу к пользователю
+    # автоматически привязываем задачу к пользователю
     def form_valid(self, form):
 
         form.instance.owner = self.request.user
@@ -68,7 +78,8 @@ class TaskUpdateView(
         'title',
         'description',
         'status',
-        'priority'
+        'priority',
+        'deadline'
     ]
 
     template_name = 'tasks/task_form.html'

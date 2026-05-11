@@ -2,16 +2,79 @@
 
 {% block content %}
 
+<!-- форма задачи -->
 <h1>Create Task</h1>
 
 <form method="post">
 
     {% csrf_token %}
 
-    {{ form.as_p }}
+    <!-- title -->
+    <p>
 
+        Title:
+
+        <input type="text" name="title" class="form-control">
+
+    </p>
+
+    <!-- description -->
+    <p>
+
+        Description:
+
+        <textarea name="description" class="form-control"></textarea>
+
+    </p>
+
+    <!-- status -->
+    <p>
+
+        Status:
+
+        <select name="status" class="form-control">
+
+            <option value="new">New</option>
+
+            <option value="progress">In Progress</option>
+
+            <option value="done">Done</option>
+
+        </select>
+
+    </p>
+
+    <!-- priority -->
+    <p>
+
+        Priority:
+
+        <select name="priority" class="form-control">
+
+            <option value="low">Low</option>
+
+            <option value="medium">Medium</option>
+
+            <option value="high">High</option>
+
+        </select>
+
+    </p>
+
+    <!-- дедлайн -->
+    <p>
+
+        Deadline:
+
+        <input type="date" name="deadline" class="form-control">
+
+    </p>
+
+    <!-- кнопка -->
     <button type="submit" class="btn btn-primary">
+
         Save
+
     </button>
 
 </form>

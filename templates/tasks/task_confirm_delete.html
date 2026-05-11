@@ -2,18 +2,23 @@
 
 {% block content %}
 
+<!-- страница удаления задачи -->
 <h1>Delete Task</h1>
 
+<!-- подтверждение удаления -->
 <p>
 
     Are you sure you want to delete this task?
 
 </p>
 
+<!-- форма удаления -->
 <form method="post">
 
+    <!-- защита формы -->
     {% csrf_token %}
 
+    <!-- кнопка удаления -->
     <button type="submit" class="btn btn-danger">
 
         Delete

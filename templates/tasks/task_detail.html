@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<!-- страница одной задачи -->
+<h1>{{ object.title }}</h1>
+
+<!-- описание задачи -->
+<p>{{ object.description }}</p>
+
+<!-- статус -->
+<p>Status: {{ object.status }}</p>
+<!-- приоритет -->
+<p>Priority: {{ object.priority }}</p>
+
+<a href="{% url 'task_update' object.pk %}" class="btn btn-warning">
+    Edit
+</a>
+
+<a href="{% url 'task_delete' object.pk %}" class="btn btn-danger">
+    Delete
+</a>
+
+{% endblock %}
