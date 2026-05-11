@@ -2,27 +2,77 @@
 
 {% block content %}
 
+<!-- заголовок -->
 <h1>Tasks</h1>
 
-<a href="{% url 'task_create' %}" class="btn btn-primary mb-3">
+<!-- кнопка создания -->
+<a href="/task/create/" class="btn btn-primary mb-3">
+
     Create Task
+
 </a>
 
+<!-- цикл по задачам -->
 {% for task in object_list %}
 
 <div class="card mb-3">
+
     <div class="card-body">
 
-        <h5>{{ task.title }}</h5>
+        <!-- название задачи -->
+        <h5>
 
-        <p>{{ task.description }}</p>
+            {{ task.title }}
+
+        </h5>
+
+        <!-- описание -->
+        <p>
+
+            {{ task.description }}
+
+        </p>
+
+        <!-- статус -->
+        <p>
+
+            Status: {{ task.status }}
+
+        </p>
+
+        <!-- приоритет -->
+        <p>
+
+            Priority: {{ task.priority }}
+
+        </p>
+
+        <!-- кнопка редактирования -->
+        <a href="/task/{{ task.id }}/update/" class="btn btn-warning">
+
+            Edit
+
+        </a>
+
+        <!-- кнопка удаления -->
+        <a href="/task/{{ task.id }}/delete/" class="btn btn-danger">
+
+            Delete
+
+        </a>
 
     </div>
+
 </div>
 
+<!-- если задач нет -->
 {% empty %}
 
-<p>No tasks yet.</p>
+<p>
+
+    No tasks yet.
+
+</p>
 
 {% endfor %}
 
