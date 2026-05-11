@@ -2,20 +2,38 @@ from django.urls import path
 
 from .views import (
     TaskListView,
-    TaskDetailView,
     TaskCreateView,
     TaskUpdateView,
     TaskDeleteView,
 )
 
 urlpatterns = [
-    path('', TaskListView.as_view(), name='task_list'),
 
-    path('task/<int:pk>/', TaskDetailView.as_view(), name='task_detail'),
+    # главная страница
+    path(
+        '',
+        TaskListView.as_view(),
+        name='task_list'
+    ),
 
-    path('task/create/', TaskCreateView.as_view(), name='task_create'),
+    # создание задачи
+    path(
+        'task/create/',
+        TaskCreateView.as_view(),
+        name='task_create'
+    ),
 
-    path('task/<int:pk>/update/', TaskUpdateView.as_view(), name='task_update'),
+    # редактирование
+    path(
+        'task/<int:pk>/update/',
+        TaskUpdateView.as_view(),
+        name='task_update'
+    ),
 
-    path('task/<int:pk>/delete/', TaskDeleteView.as_view(), name='task_delete'),
+    # удаление
+    path(
+        'task/<int:pk>/delete/',
+        TaskDeleteView.as_view(),
+        name='task_delete'
+    ),
 ]
