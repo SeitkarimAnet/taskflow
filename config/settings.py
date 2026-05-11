@@ -2,6 +2,7 @@ from pathlib import Path
 from dotenv import load_dotenv
 import os
 
+# подключение env файла
 load_dotenv()
 
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -10,7 +11,11 @@ SECRET_KEY = 'django-secret-key'
 
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'taskflow-2isd.onrender.com',
+    '127.0.0.1',
+    'localhost',
+]
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -53,6 +58,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'config.wsgi.application'
 
+# база данных проекта
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
