@@ -16,9 +16,15 @@ from django.views.generic import (
 from .models import Task
 
 
-class TaskListView(ListView):
+class TaskListView(LoginRequiredMixin, ListView):
     model = Task
     template_name = 'tasks/task_list.html'
+
+    def get_queryset(self):
+        return Task.objects.filter(
+            owner=self.request.user,
+            is_deleted=False
+        )
 
 
 class TaskDetailView(DetailView):
