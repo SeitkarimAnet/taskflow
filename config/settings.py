@@ -77,9 +77,14 @@ TIME_ZONE = 'UTC'
 USE_I18N = True
 USE_TZ = True
 
+# Static files (CSS, JavaScript, Images)
 STATIC_URL = 'static/'
+# папка для static файлов на Render
+STATIC_ROOT = BASE_DIR / 'staticfiles'
+# дополнительные static файлы
 STATICFILES_DIRS = [BASE_DIR / 'static']
 
+# media files
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
