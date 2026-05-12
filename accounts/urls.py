@@ -50,4 +50,19 @@ urlpatterns = [
 
         name='profile-update'
     ),
+
+    # смена пароля
+    path(
+
+        'password-change/',
+
+        auth_views.PasswordChangeView.as_view(
+
+            template_name='accounts/password_change.html',
+
+            success_url='/'
+        ),
+
+        name='password-change'
+    ),
 ]
