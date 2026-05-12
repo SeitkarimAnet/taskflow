@@ -1,21 +1,30 @@
+<!-- подключаем основной шаблон -->
 {% extends 'base.html' %}
 
+<!-- начало контента -->
 {% block content %}
 
+<!-- заголовок -->
 <h1 class="mb-4">
 
     Edit Profile
 
 </h1>
 
+<!-- bootstrap карточка -->
 <div class="card p-4">
 
-    <form method="post" enctype="multipart/form-data">
+    <!-- форма редактирования -->
+    <form method="post"
+          enctype="multipart/form-data">
 
+        <!-- защита django -->
         {% csrf_token %}
 
+        <!-- вывод полей формы -->
         {{ form.as_p }}
 
+        <!-- кнопка сохранения -->
         <button type="submit"
                 class="btn btn-primary">
 
@@ -23,8 +32,17 @@
 
         </button>
 
+        <!-- кнопка смены пароля -->
+        <a href="/accounts/password-change/"
+           class="btn btn-warning">
+
+            Change Password
+
+        </a>
+
     </form>
 
 </div>
 
+<!-- конец контента -->
 {% endblock %}
