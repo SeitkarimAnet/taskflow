@@ -11,6 +11,16 @@
 
 </h1>
 
+<!-- отображение аватара -->
+{% if user.avatar %}
+
+    <img src="{{ user.avatar.url }}"
+         width="150"
+         height="150"
+         class="rounded-circle mb-3">
+
+{% endif %}
+
 <!-- bootstrap карточка -->
 <div class="card p-4">
 
