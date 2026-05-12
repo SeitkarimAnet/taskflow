@@ -29,7 +29,7 @@ class ProfileUpdateView(LoginRequiredMixin, UpdateView):
 
     template_name = 'accounts/profile_update.html'
 
-    success_url = reverse_lazy('/')
+    success_url = reverse_lazy = '/'
 
     # пользователь редактирует только свой профиль
     def get_object(self):
