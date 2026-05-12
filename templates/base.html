@@ -2,96 +2,90 @@
 <html lang="en">
 
 <head>
-
     <meta charset="UTF-8">
 
     <!-- название сайта -->
     <title>TaskFlow</title>
 
-    <!-- bootstrap -->
+    <!-- подключение bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
           rel="stylesheet">
-
 </head>
 
-<body class="bg-dark">
+<body>
 
-<!-- верхняя панель -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-black">
+<!-- верхняя панель сайта -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 
     <div class="container">
 
-        <!-- название проекта -->
+        <!-- логотип -->
         <a class="navbar-brand" href="/">
-
             TaskFlow
-
         </a>
 
         <div>
 
-            <!-- если пользователь вошел -->
-            {% if user.is_authenticated %}
+        <!-- если пользователь вошел -->
+        {% if user.is_authenticated %}
 
-                <!-- username -->
-                <span class="text-white me-3">
+            <!-- username -->
+            <span class="text-white me-3">
+                Hello, {{ user.username }}
+            </span>
 
-                    Hello, {{ user.username }}
+            <!-- профиль -->
+            <a href="/accounts/profile/"
+               class="btn btn-info">
 
-                </span>
+                Profile
 
-                <!-- профиль -->
-                <a href="/accounts/profile/"
-                   class="btn btn-info">
+            </a>
 
-                    Profile
+            <!-- админка -->
+            <a href="/admin/"
+               class="btn btn-dark">
 
-                </a>
+                Administrator
 
-                <!-- админка -->
-                <a href="/admin/"
-                   class="btn btn-dark">
+            </a>
 
-                    Administrator
+            <!-- выход -->
+            <a href="/accounts/logout/"
+               class="btn btn-danger">
 
-                </a>
+                Logout
 
-                <!-- выход -->
-                <a href="/accounts/logout/"
-                   class="btn btn-danger">
+            </a>
 
-                    Logout
+        <!-- если пользователь не вошел -->
+        {% else %}
 
-                </a>
+            <!-- логин -->
+            <a href="/accounts/login/"
+               class="btn btn-light">
 
-            <!-- если пользователь не вошел -->
-            {% else %}
+                Login
 
-                <!-- логин -->
-                <a href="/accounts/login/"
-                   class="btn btn-light">
+            </a>
 
-                    Login
+            <!-- регистрация -->
+            <a href="/accounts/register/"
+               class="btn btn-success">
 
-                </a>
+                Register
 
-                <!-- регистрация -->
-                <a href="/accounts/register/"
-                   class="btn btn-success">
+            </a>
 
-                    Register
+            <!-- админка -->
+            <a href="/admin/"
+               class="btn btn-dark">
 
-                </a>
+                Administrator
 
-                <!-- админка -->
-                <a href="/admin/"
-                   class="btn btn-dark">
+            </a>
 
-                    Administrator
-
-                </a>
-
-            {% endif %}
+        {% endif %}
 
         </div>
 
